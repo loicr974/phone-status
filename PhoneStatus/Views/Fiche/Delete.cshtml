@@ -1,0 +1,29 @@
+﻿@model PhoneStatus.Models.FicheModel
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Etes vous sûr de vouloir supprimer le compte du client suivant?</h3>
+<div>
+    <dl class="dl-horizontal">
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <span></span>
+        <ul>
+            <li>Nom: @Model.Client.Nom</li>
+            <li>Prénom: @Model.Client.Prenom</li>
+            <li>Tél: @Model.Client.Tel</li>
+        </ul>
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

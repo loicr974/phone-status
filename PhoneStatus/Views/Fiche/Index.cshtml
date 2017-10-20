@@ -1,0 +1,37 @@
+﻿@model IEnumerable<PhoneStatus.Models.FicheModel>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "CreateAsync")
+</p>
+<div class="fiche_grid container">
+    <div class="row">
+        <div class="col-md-12">
+            @foreach (var item in Model)
+            {
+
+                <div data-id="@item.Id" data-actionclick=@Url.Action("Details","Fiche", new {id = item.Id }) class="card col-md-3">
+                    <div class="card-body test">
+                        <h4 class="card-title">@Html.Label(item.Client.Nom)</h4>
+                        <p class="card-text">Statut: @Html.Label(item.status.Texte)</p>
+                        @Html.Partial("_ProgressBar", item.status)
+                        @Html.ActionLinkGlyphicon("Index","Fiche","star")
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</div>
+@section scripts{
+    <script type="text/javascript">
+        actionClickUrl();
+    </script>
+    }
+
+
+

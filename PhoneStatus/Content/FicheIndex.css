@@ -1,0 +1,25 @@
+﻿.fiche_grid {
+    padding: 0 !important;
+}
+
+.card {
+    padding: 0px!important;
+}
+
+.test:hover {
+    background-color: #ff6a00;
+    color:white;
+}
+
+.test{
+    margin: 5px;
+    border: 1px solid grey;
+    padding:5px;
+}
+
+.tools {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+    flex-wrap: nowrap;
+}

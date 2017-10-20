@@ -1,0 +1,30 @@
+﻿@model PhoneStatus.Models.FicheModel
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-offset-2 col-md-8">
+                <h4>@Model.Client.Nom @Model.Client.Nom</h4>
+                <hr />
+                <dl class="dl-horizontal"></dl>
+            <span>Statut: @Html.Label(Model.status.Texte)</span>
+            @Html.Partial("_ProgressBar", Model.status)
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-offset-10 col-md-2 tools">
+            <div>
+                @Html.ActionLinkGlyphicon("Edit", "Fiche", "pencil", new { id = Model.Id })
+            </div>
+            <div>
+                @Html.ActionLinkGlyphicon("Delete", "Fiche", "remove", new { id = Model.Id })
+            </div>
+        </div>
+    </div>
+</div>

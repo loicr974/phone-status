@@ -1,0 +1,55 @@
+﻿@model PhoneStatus.Models.Status
+@{
+    var defaultString = "hidden";
+    string diag_ip = defaultString;
+    string diag_end = defaultString;
+    string att_piece_ip = defaultString;
+    string att_piece_end = defaultString;
+    string rep_ip = defaultString;
+    string rep_end = defaultString;
+    string final_end = defaultString;
+    switch (Model.Etat)
+    {
+        case PhoneStatus.Models.Etat.final_end:
+            final_end = "show";
+            goto case PhoneStatus.Models.Etat.rep_end;
+        case PhoneStatus.Models.Etat.rep_end:
+            rep_end = "show";
+            goto case PhoneStatus.Models.Etat.rep_ip;
+        case PhoneStatus.Models.Etat.rep_ip:
+            rep_ip = "show";
+            goto case PhoneStatus.Models.Etat.att_piece_end;
+        case PhoneStatus.Models.Etat.att_piece_end:
+            att_piece_end = "show";
+            goto case PhoneStatus.Models.Etat.att_piece_ip;
+        case PhoneStatus.Models.Etat.att_piece_ip:
+            att_piece_ip = "show";
+            goto case PhoneStatus.Models.Etat.diag_end;
+        case PhoneStatus.Models.Etat.diag_end:
+            diag_end = "show";
+            goto case PhoneStatus.Models.Etat.diag_ip;
+        case PhoneStatus.Models.Etat.diag_ip:
+            diag_ip = "show";
+            break;
+        default:
+            break;
+    }
+
+
+}
+<div class="progress">
+        <div class="progress-bar progress-bar-success @diag_ip" style="width: 15%">
+        </div>
+        <div class="progress-bar progress-bar-success @diag_end" style="width: 15%">
+        </div>
+        <div class="progress-bar progress-bar-warning @att_piece_ip" style="width: 15%">
+        </div>
+        <div class="progress-bar progress-bar-warning @att_piece_end" style="width: 15%">
+        </div>
+        <div class="progress-bar progress-bar-danger @rep_ip" style="width: 15%">
+        </div>
+        <div class="progress-bar progress-bar-danger @rep_end" style="width: 15%">
+        </div>
+        <div class="progress-bar @final_end" style="width: 10%">
+        </div>
+</div>
